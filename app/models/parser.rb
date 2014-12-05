@@ -1,8 +1,12 @@
 class Parser < ActiveRecord::Base
   
   def parse(file)
+    partida = Partida.new
     file.each do |line|
-     return Partida.new start: /\d{8,}/.match(line)  if line.include? 'has started'      
+      partida.started(line[/\d{8,}/].to_i) if line.include? 'has started'
+      
+      partida.finished(line[/\d{8,}/].to_i) if line.include? 'has ended'
     end
+    partida
   end
 end
