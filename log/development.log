@@ -50,3 +50,17 @@ Migrating to CreateParsers (20141204002106)
             WHERE name='index_partidas_on_jogador_id' AND type='index'
 [0m
   [1m[36mParser Load (2.2ms)[0m  [1mSELECT "parsers".* FROM "parsers"[0m
+  [1m[36mPartida Load (1.2ms)[0m  [1mSELECT "partidas".* FROM "partidas"[0m
+  [1m[35mPartida Load (0.2ms)[0m  SELECT "partidas".* FROM "partidas"
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "partidas" ("created_at", "updated_at") VALUES (?, ?)  [["created_at", "2014-12-06 02:14:32.959075"], ["updated_at", "2014-12-06 02:14:32.959075"]]
+  [1m[36m (170.4ms)[0m  [1mcommit transaction[0m
+  [1m[35mPartida Load (0.1ms)[0m  SELECT  "partidas".* FROM "partidas"   ORDER BY "partidas"."id" ASC LIMIT 1
+  [1m[36mJogador Load (0.2ms)[0m  [1mSELECT "jogadors".* FROM "jogadors"  WHERE "jogadors"."partida_id" = ?[0m  [[nil, 1]]
+SQLite3::SQLException: no such column: jogadors.partida_id: SELECT "jogadors".* FROM "jogadors"  WHERE "jogadors"."partida_id" = ?
+  [1m[35mPartida Load (0.1ms)[0m  SELECT  "partidas".* FROM "partidas"   ORDER BY "partidas"."id" ASC LIMIT 1
+  [1m[36mPartida Load (0.2ms)[0m  [1mSELECT  "partidas".* FROM "partidas"   ORDER BY "partidas"."id" ASC LIMIT 1[0m
+  [1m[35mPartida Load (0.3ms)[0m  SELECT  "partidas".* FROM "partidas"   ORDER BY "partidas"."id" ASC LIMIT 1
+  [1m[36mPartida Load (0.2ms)[0m  [1mSELECT  "partidas".* FROM "partidas"   ORDER BY "partidas"."id" ASC LIMIT 1[0m
+  [1m[35mJogador Load (0.2ms)[0m  SELECT "jogadors".* FROM "jogadors"  WHERE "jogadors"."partida_id" = ?  [[nil, 1]]
+SQLite3::SQLException: no such column: jogadors.partida_id: SELECT "jogadors".* FROM "jogadors"  WHERE "jogadors"."partida_id" = ?
