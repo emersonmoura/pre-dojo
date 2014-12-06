@@ -4,9 +4,12 @@ class Parser < ActiveRecord::Base
     partida = criar_partida(file) 
     file.each do |line|
       if line.include? 'killed'
-        jogador = Jogador.new nome: gamer_name(line)
+        jogador = partida.jogador gamer_name(line)
+        unless jogador
+          jogador = Jogador.new nome: gamer_name(line) unless jogador
+          partida.addGamer jogador
+        end
         jogador.maisUmaMorte
-        partida.addGamer jogador
       end
     end
     partida

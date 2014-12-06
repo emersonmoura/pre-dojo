@@ -1,7 +1,6 @@
 class Jogador < ActiveRecord::Base
-
   def maisUmaMorte
-    @assassinatos ||= 0
-    @assassinatos+=1
+    self.assassinatos ||= 0
+    self.assassinatos+=1
   end
 end
