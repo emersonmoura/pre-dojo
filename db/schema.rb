@@ -11,28 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141204002106) do
+ActiveRecord::Schema.define(version: 20141203235112) do
 
-  create_table "jogadors", force: true do |t|
-    t.string   "nome"
-    t.integer  "assassinatos"
-    t.integer  "mortes"
+  create_table "gamers", force: true do |t|
+    t.string   "name"
+    t.integer  "killings"
+    t.integer  "deaths"
+    t.integer  "round_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "parsers", force: true do |t|
+  add_index "gamers", ["round_id"], name: "index_gamers_on_round_id"
+
+  create_table "rounds", force: true do |t|
+    t.datetime "start"
+    t.datetime "finish"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  create_table "partidas", force: true do |t|
-    t.integer  "ranking"
-    t.integer  "jogador_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "partidas", ["jogador_id"], name: "index_partidas_on_jogador_id"
 
 end

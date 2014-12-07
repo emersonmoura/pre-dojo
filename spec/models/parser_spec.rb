@@ -29,18 +29,18 @@ describe Parser do
     
       it { expect(@partida.gamer(gamer_name)).not_to be_nil }
       
-      it { expect(@partida.gamer(gamer_name).nome).to eq gamer_name }
+      it { expect(@partida.gamer(gamer_name).name).to eq gamer_name }
       
-      it { expect(@partida.gamer(gamer_name).assassinatos).to eq 1 }
+      it { expect(@partida.gamer(gamer_name).killings).to eq 1 }
       
       it 'repeated should increment existing' do
         @partida = subject.parse [killer, killer]
-        expect(@partida.gamer(gamer_name).assassinatos).to eq 2
+        expect(@partida.gamer(gamer_name).killings).to eq 2
       end
      
-      it { expect(@partida.gamer(killed_name).nome).to eq killed_name }
+      it { expect(@partida.gamer(killed_name).name).to eq killed_name }
       
-      it { expect(@partida.gamer(killed_name).mortes).to eq 1 }
+      it { expect(@partida.gamer(killed_name).deaths).to eq 1 }
       
     end
   end

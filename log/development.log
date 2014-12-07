@@ -64,3 +64,232 @@ SQLite3::SQLException: no such column: jogadors.partida_id: SELECT "jogadors".* 
   [1m[36mPartida Load (0.2ms)[0m  [1mSELECT  "partidas".* FROM "partidas"   ORDER BY "partidas"."id" ASC LIMIT 1[0m
   [1m[35mJogador Load (0.2ms)[0m  SELECT "jogadors".* FROM "jogadors"  WHERE "jogadors"."partida_id" = ?  [[nil, 1]]
 SQLite3::SQLException: no such column: jogadors.partida_id: SELECT "jogadors".* FROM "jogadors"  WHERE "jogadors"."partida_id" = ?
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+undefined method `empty?' for nil:NilClass
+  [1m[36m (163.3ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35m (0.2ms)[0m  select sqlite_version(*)
+  [1m[36m (155.3ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateJogadors (20141203235052)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "jogadors" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "nome" varchar(255), "assassinatos" integer, "mortes" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20141203235052"]]
+  [1m[35m (146.5ms)[0m  commit transaction
+Migrating to CreatePartidas (20141203235112)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  CREATE TABLE "partidas" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime, "updated_at" datetime, "jogador_id" integer) 
+  [1m[36m (0.3ms)[0m  [1mCREATE  INDEX "index_partidas_on_jogador_id" ON "partidas" ("jogador_id")[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20141203235112"]]
+  [1m[36m (139.5ms)[0m  [1mcommit transaction[0m
+Migrating to CreateParsers (20141204002106)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mCREATE TABLE "parsers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20141204002106"]]
+  [1m[36m (171.9ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_partidas_on_jogador_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_partidas_on_jogador_id' AND type='index'
+[0m
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+undefined method `empty?' for nil:NilClass
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "partidas" ("created_at", "updated_at") VALUES (?, ?)  [["created_at", "2014-12-07 02:29:07.666125"], ["updated_at", "2014-12-07 02:29:07.666125"]]
+  [1m[36m (134.1ms)[0m  [1mcommit transaction[0m
+  [1m[35mPartida Load (0.3ms)[0m  SELECT "partidas".* FROM "partidas"
+  [1m[36mPartida Load (0.3ms)[0m  [1mSELECT  "partidas".* FROM "partidas"   ORDER BY "partidas"."id" DESC LIMIT 1[0m
+  [1m[35mJogador Load (0.3ms)[0m  SELECT "jogadors".* FROM "jogadors"  WHERE "jogadors"."partida_id" = ?  [[nil, 1]]
+SQLite3::SQLException: no such column: jogadors.partida_id: SELECT "jogadors".* FROM "jogadors"  WHERE "jogadors"."partida_id" = ?
+  [1m[36mJogador Load (0.4ms)[0m  [1mSELECT  "jogadors".* FROM "jogadors"  WHERE "jogadors"."partida_id" = ?  ORDER BY "jogadors"."id" ASC LIMIT 1[0m  [[nil, 1]]
+SQLite3::SQLException: no such column: jogadors.partida_id: SELECT  "jogadors".* FROM "jogadors"  WHERE "jogadors"."partida_id" = ?  ORDER BY "jogadors"."id" ASC LIMIT 1
+  [1m[36m (151.4ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35m (0.3ms)[0m  select sqlite_version(*)
+  [1m[36m (132.7ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.3ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateJogadors (20141203235052)
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateGamers (20141203235052)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mCREATE TABLE "gamers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "killings" integer, "deaths" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20141203235052"]]
+  [1m[36m (446.2ms)[0m  [1mcommit transaction[0m
+Migrating to CreateRounds (20141203235112)
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateRounds (20141203235112)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mCREATE TABLE "rounds" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime, "updated_at" datetime, "gamer_id" integer, "round_id" integer) [0m
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (0.1ms)[0m  [1mCREATE  INDEX "index_rounds_on_gamer_id" ON "rounds" ("gamer_id")[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_rounds_on_gamer_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_rounds_on_gamer_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1mCREATE  INDEX "index_rounds_on_round_id" ON "rounds" ("round_id")[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20141203235112"]]
+  [1m[36m (144.1ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_rounds_on_round_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_rounds_on_round_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_rounds_on_gamer_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_rounds_on_gamer_id' AND type='index'
+
+  [1m[35mGamer Load (0.1ms)[0m  SELECT  "gamers".* FROM "gamers"   ORDER BY "gamers"."id" DESC LIMIT 1
+  [1m[36mRound Load (0.2ms)[0m  [1mSELECT  "rounds".* FROM "rounds"   ORDER BY "rounds"."id" DESC LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "rounds" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2014-12-07 03:08:36.232841"], ["updated_at", "2014-12-07 03:08:36.232841"]]
+  [1m[35m (710.8ms)[0m  commit transaction
+  [1m[36mGamer Load (0.2ms)[0m  [1mSELECT "gamers".* FROM "gamers"  WHERE "gamers"."round_id" = ?[0m  [[nil, 1]]
+SQLite3::SQLException: no such column: gamers.round_id: SELECT "gamers".* FROM "gamers"  WHERE "gamers"."round_id" = ?
+  [1m[35mGamer Load (0.4ms)[0m  SELECT  "gamers".* FROM "gamers"  WHERE "gamers"."round_id" = ?  ORDER BY "gamers"."id" ASC LIMIT 1  [[nil, 1]]
+SQLite3::SQLException: no such column: gamers.round_id: SELECT  "gamers".* FROM "gamers"  WHERE "gamers"."round_id" = ?  ORDER BY "gamers"."id" ASC LIMIT 1
+  [1m[36m (133.9ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35m (0.2ms)[0m  select sqlite_version(*)
+  [1m[36m (132.7ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.3ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateGamers (20141203235052)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "gamers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "killings" integer, "deaths" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20141203235052"]]
+  [1m[35m (135.0ms)[0m  commit transaction
+Migrating to CreateRounds (20141203235112)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "rounds" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime, "updated_at" datetime, "round_id" integer, "gamer_id" integer) 
+  [1m[36m (0.3ms)[0m  [1mCREATE  INDEX "index_rounds_on_round_id" ON "rounds" ("round_id")[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_rounds_on_round_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_rounds_on_round_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1mCREATE  INDEX "index_rounds_on_gamer_id" ON "rounds" ("gamer_id")[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20141203235112"]]
+  [1m[36m (151.5ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_rounds_on_gamer_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_rounds_on_gamer_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_rounds_on_round_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_rounds_on_round_id' AND type='index'
+
+  [1m[36mRound Load (0.3ms)[0m  [1mSELECT  "rounds".* FROM "rounds"   ORDER BY "rounds"."id" DESC LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "rounds" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2014-12-07 03:10:32.572540"], ["updated_at", "2014-12-07 03:10:32.572540"]]
+  [1m[35m (224.2ms)[0m  commit transaction
+  [1m[36mGamer Load (0.4ms)[0m  [1mSELECT "gamers".* FROM "gamers"  WHERE "gamers"."round_id" = ?[0m  [[nil, 1]]
+SQLite3::SQLException: no such column: gamers.round_id: SELECT "gamers".* FROM "gamers"  WHERE "gamers"."round_id" = ?
+  [1m[35mGamer Load (0.4ms)[0m  SELECT  "gamers".* FROM "gamers"  WHERE "gamers"."round_id" = ?  ORDER BY "gamers"."id" ASC LIMIT 1  [[nil, 1]]
+SQLite3::SQLException: no such column: gamers.round_id: SELECT  "gamers".* FROM "gamers"  WHERE "gamers"."round_id" = ?  ORDER BY "gamers"."id" ASC LIMIT 1
+  [1m[36m (131.6ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35m (0.2ms)[0m  select sqlite_version(*)
+  [1m[36m (133.2ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.3ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateGamers (20141203235052)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.7ms)[0m  CREATE TABLE "gamers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "killings" integer, "deaths" integer, "round_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (0.4ms)[0m  [1mCREATE  INDEX "index_gamers_on_round_id" ON "gamers" ("round_id")[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20141203235052"]]
+  [1m[36m (128.0ms)[0m  [1mcommit transaction[0m
+Migrating to CreateRounds (20141203235112)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.5ms)[0m  [1mCREATE TABLE "rounds" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20141203235112"]]
+  [1m[36m (142.3ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_gamers_on_round_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_gamers_on_round_id' AND type='index'
+[0m
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "rounds" ("created_at", "updated_at") VALUES (?, ?)  [["created_at", "2014-12-07 03:28:07.078357"], ["updated_at", "2014-12-07 03:28:07.078357"]]
+  [1m[36m (143.2ms)[0m  [1mcommit transaction[0m
+  [1m[35mGamer Load (0.3ms)[0m  SELECT  "gamers".* FROM "gamers"  WHERE "gamers"."round_id" = ?  ORDER BY "gamers"."id" ASC LIMIT 1  [["round_id", 1]]
+  [1m[36mGamer Load (0.1ms)[0m  [1mSELECT  "gamers".* FROM "gamers"  WHERE "gamers"."round_id" = ?  ORDER BY "gamers"."id" ASC LIMIT 1[0m  [["round_id", 1]]
+  [1m[36m (162.3ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35m (0.2ms)[0m  select sqlite_version(*)
+  [1m[36m (155.0ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateGamers (20141203235052)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.7ms)[0m  CREATE TABLE "gamers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "killings" integer, "deaths" integer, "round_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (0.3ms)[0m  [1mCREATE  INDEX "index_gamers_on_round_id" ON "gamers" ("round_id")[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20141203235052"]]
+  [1m[36m (128.9ms)[0m  [1mcommit transaction[0m
+Migrating to CreateRounds (20141203235112)
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36m (0.7ms)[0m  [1mCREATE TABLE "rounds" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "start" datetime, "finish" datetime, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20141203235112"]]
+  [1m[36m (128.6ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.2ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_gamers_on_round_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_gamers_on_round_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "rounds" ("created_at", "start", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", "2014-12-07 03:34:18.905324"], ["start", nil], ["updated_at", "2014-12-07 03:34:18.905324"]]
+  [1m[35m (134.6ms)[0m  commit transaction
+  [1m[36mGamer Load (0.3ms)[0m  [1mSELECT "gamers".* FROM "gamers"  WHERE "gamers"."round_id" = ?[0m  [["round_id", 1]]
+  [1m[36m (840.0ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35m (0.3ms)[0m  select sqlite_version(*)
+  [1m[36m (132.2ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.3ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateGamers (20141203235052)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "gamers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "killings" integer, "deaths" integer, "round_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (0.1ms)[0m  [1mCREATE  INDEX "index_gamers_on_round_id" ON "gamers" ("round_id")[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20141203235052"]]
+  [1m[36m (131.2ms)[0m  [1mcommit transaction[0m
+Migrating to CreateRounds (20141203235112)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.5ms)[0m  [1mCREATE TABLE "rounds" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "start" datetime, "finish" datetime, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20141203235112"]]
+  [1m[36m (198.2ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.2ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_gamers_on_round_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_gamers_on_round_id' AND type='index'
+[0m
