@@ -1,0 +1,33 @@
+<div class="row">
+<div class="col-md-2 col-md-offset-4">
+<%= simple_form_for :log, { url: ranking_log_path } do |f| %>
+  <%= f.input :text, as: :text, :input_html => { style: 'width: 400px; height: 200px'}, label: 'Log:', required: false %>
+  <%= f.button :submit, "Enviar log" %>
+<% end %>
+</div>
+</div>
+<div class="row">
+  <div class="bs-callout bs-callout-info col-md-2 col-md-offset-4">
+      <h4>Quem mais matou?</h4>
+  </div>
+</div>
+<div class="row">
+  <%= pie_chart  Gamer.group(:name).sum(:killings) %>
+</div>
+<div class="row">
+<%= column_chart Gamer.group(:name).sum(:killings) %>
+</div>
+
+<div class="row">
+  <div class="bs-callout bs-callout-info col-md-2 col-md-offset-4">
+      <h4>Quem mais morreu?</h4>
+  </div>
+</div>
+<div class="row">
+  <%= pie_chart  Gamer.group(:name).sum(:deaths) %>
+</div>
+<div class="row">
+<%= bar_chart Gamer.group(:name).sum(:deaths) %>
+</div>
+
+  
