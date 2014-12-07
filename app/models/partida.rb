@@ -1,9 +1,9 @@
 class Partida < ActiveRecord::Base
-  attr_reader :start, :finish, :jogador_nome
-  has_many :jogadores, class_name:  'Jogador'
+  attr_reader :start, :finish
+  has_many :gamers, class_name:  'Jogador'
   
   def initialize
-    @jogadores ||= []
+    @gamers ||= []
   end
   
   def started(time)
@@ -14,11 +14,11 @@ class Partida < ActiveRecord::Base
     @finish = time
   end
   
-  def jogador(nome)
-    @jogadores.select { |jogador| jogador.nome.eql? nome }.first
+  def gamer(nome)
+    @gamers.select { |gamer| gamer.nome.eql? nome }.first
   end
   
   def addGamer(gamer)
-    @jogadores.push gamer unless @jogadores.include? gamer
+    @gamers.push gamer unless @gamers.include? gamer
   end
 end

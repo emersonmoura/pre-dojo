@@ -4,7 +4,6 @@ class CreateJogadors < ActiveRecord::Migration
       t.string :nome
       t.integer :assassinatos
       t.integer :mortes
-
       t.timestamps
     end
   end

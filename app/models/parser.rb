@@ -1,33 +1,41 @@
 class Parser < ActiveRecord::Base
   
   def parse(file)
-    partida = criar_partida(file) 
+    create_round(file) 
     file.each do |line|
       if line.include? 'killed'
-        jogador = partida.jogador gamer_name(line)
-        unless jogador
-          jogador = Jogador.new nome: gamer_name(line) unless jogador
-          partida.addGamer jogador
-        end
-        jogador.maisUmaMorte
+        gamer(gamer_name(line)).kill
+        gamer(killed_name(line)).killed
       end
     end
-    partida
+    @round
   end
   
   private
   
-  def criar_partida(file)
-    partida = Partida.new
-    start = file.first
-    partida.started(start[/\d{8,}/].to_i) if start.include? 'has started'
-    finish = file.last
-    partida.finished(finish[/\d{8,}/].to_i) if finish.include? 'has ended'
-    partida
+  def gamer(name)
+    gamer = @round.gamer name
+    gamer = criar_gamer name unless gamer
+    gamer
+  end
+  
+  def criar_gamer(name)
+    gamer = Jogador.new nome: name 
+    @round.addGamer gamer
+    gamer
+  end
+  
+  def create_round(file)
+    @round = Partida.new
+    @round.started(file.first[/\d{8,}/].to_i) if file.first.include? 'has started'
+    @round.finished(file.last[/\d{8,}/].to_i) if file.last.include? 'has ended'
   end
   
   def gamer_name(line)
-    line.split(' ')[3]
+    line.split[3]
   end
   
+  def killed_name(line)
+    line.split[5]
+  end
 end
