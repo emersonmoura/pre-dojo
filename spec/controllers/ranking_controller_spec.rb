@@ -9,11 +9,4 @@ describe RankingController do
     end
   end
 
-  describe "GET 'log:text'" do
-    it "returns http success" do
-      get 'log:text'
-      response.should be_success
-    end
-  end
-
 end
