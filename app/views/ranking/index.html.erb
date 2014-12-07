@@ -1,33 +1,35 @@
+<br><br>
 <div class="row">
 <div class="col-md-2 col-md-offset-4">
 <%= simple_form_for :log, { url: ranking_log_path } do |f| %>
-  <%= f.input :text, as: :text, :input_html => { style: 'width: 400px; height: 200px'}, label: 'Log:', required: false %>
-  <%= f.button :submit, "Enviar log" %>
+  <%= f.input :text, as: :text, :input_html => { style: 'width: 400px; height: 200px'}, label: 'Cole aqui o log:', required: false %>
+  <%= f.button :submit, "Atualizar ranking" %>
 <% end %>
 </div>
 </div>
+<br><br>
 <div class="row">
   <div class="bs-callout bs-callout-info col-md-2 col-md-offset-4">
       <h4>Quem mais matou?</h4>
   </div>
 </div>
 <div class="row">
-  <%= pie_chart  Gamer.group(:name).sum(:killings) %>
+  <%= line_chart  Gamer.group(:name).sum(:killings), discrete: true %>
 </div>
 <div class="row">
-<%= column_chart Gamer.group(:name).sum(:killings) %>
+<%= column_chart Gamer.group(:name).sum(:killings), discrete: true %>
 </div>
-
+<br>
 <div class="row">
   <div class="bs-callout bs-callout-info col-md-2 col-md-offset-4">
       <h4>Quem mais morreu?</h4>
   </div>
 </div>
 <div class="row">
-  <%= pie_chart  Gamer.group(:name).sum(:deaths) %>
+  <%= pie_chart  Gamer.group(:name).sum(:deaths), discrete: true %>
 </div>
 <div class="row">
-<%= bar_chart Gamer.group(:name).sum(:deaths) %>
+<%= bar_chart Gamer.group(:name).sum(:deaths), discrete: true %>
 </div>
 
   

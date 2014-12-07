@@ -4052,3 +4052,139 @@ Processing by RankingController#log as HTML
   [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("gamers"."deaths") AS sum_deaths, name AS name FROM "gamers"  GROUP BY name[0m
   Rendered ranking/index.html.erb within layouts/application (5.6ms)
 Completed 200 OK in 719ms (Views: 108.9ms | ActiveRecord: 599.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-12-07 16:28:37 -0200
+Processing by RankingController#index as HTML
+  [1m[35m (0.1ms)[0m  SELECT SUM("gamers"."killings") AS sum_killings, name AS name FROM "gamers"  GROUP BY name
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("gamers"."killings") AS sum_killings, name AS name FROM "gamers"  GROUP BY name[0m
+  [1m[35m (0.1ms)[0m  SELECT SUM("gamers"."deaths") AS sum_deaths, name AS name FROM "gamers"  GROUP BY name
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("gamers"."deaths") AS sum_deaths, name AS name FROM "gamers"  GROUP BY name[0m
+  Rendered ranking/index.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 102ms (Views: 100.8ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-12-07 16:29:33 -0200
+Processing by RankingController#index as HTML
+  [1m[35m (0.4ms)[0m  SELECT SUM("gamers"."killings") AS sum_killings, name AS name FROM "gamers"  GROUP BY name
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("gamers"."killings") AS sum_killings, name AS name FROM "gamers"  GROUP BY name[0m
+  [1m[35m (0.4ms)[0m  SELECT SUM("gamers"."deaths") AS sum_deaths, name AS name FROM "gamers"  GROUP BY name
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("gamers"."deaths") AS sum_deaths, name AS name FROM "gamers"  GROUP BY name[0m
+  Rendered ranking/index.html.erb within layouts/application (12.6ms)
+Completed 200 OK in 113ms (Views: 111.4ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-12-07 16:30:43 -0200
+Processing by RankingController#index as HTML
+  [1m[35m (0.4ms)[0m  SELECT SUM("gamers"."killings") AS sum_killings, name AS name FROM "gamers"  GROUP BY name
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("gamers"."killings") AS sum_killings, name AS name FROM "gamers"  GROUP BY name[0m
+  [1m[35m (0.3ms)[0m  SELECT SUM("gamers"."deaths") AS sum_deaths, name AS name FROM "gamers"  GROUP BY name
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("gamers"."deaths") AS sum_deaths, name AS name FROM "gamers"  GROUP BY name[0m
+  Rendered ranking/index.html.erb within layouts/application (10.7ms)
+Completed 200 OK in 118ms (Views: 117.0ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-12-07 16:30:51 -0200
+Processing by RankingController#index as HTML
+  [1m[35m (0.4ms)[0m  SELECT SUM("gamers"."killings") AS sum_killings, name AS name FROM "gamers"  GROUP BY name
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("gamers"."killings") AS sum_killings, name AS name FROM "gamers"  GROUP BY name[0m
+  [1m[35m (0.2ms)[0m  SELECT SUM("gamers"."deaths") AS sum_deaths, name AS name FROM "gamers"  GROUP BY name
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("gamers"."deaths") AS sum_deaths, name AS name FROM "gamers"  GROUP BY name[0m
+  Rendered ranking/index.html.erb within layouts/application (9.9ms)
+Completed 200 OK in 107ms (Views: 105.8ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-12-07 16:31:05 -0200
+Processing by RankingController#index as HTML
+  [1m[35m (0.4ms)[0m  SELECT SUM("gamers"."killings") AS sum_killings, name AS name FROM "gamers"  GROUP BY name
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("gamers"."killings") AS sum_killings, name AS name FROM "gamers"  GROUP BY name[0m
+  [1m[35m (0.3ms)[0m  SELECT SUM("gamers"."deaths") AS sum_deaths, name AS name FROM "gamers"  GROUP BY name
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("gamers"."deaths") AS sum_deaths, name AS name FROM "gamers"  GROUP BY name[0m
+  Rendered ranking/index.html.erb within layouts/application (10.8ms)
+Completed 200 OK in 120ms (Views: 117.9ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-12-07 16:31:19 -0200
+Processing by RankingController#index as HTML
+  [1m[35m (0.3ms)[0m  SELECT SUM("gamers"."killings") AS sum_killings, name AS name FROM "gamers"  GROUP BY name
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("gamers"."killings") AS sum_killings, name AS name FROM "gamers"  GROUP BY name[0m
+  [1m[35m (0.1ms)[0m  SELECT SUM("gamers"."deaths") AS sum_deaths, name AS name FROM "gamers"  GROUP BY name
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("gamers"."deaths") AS sum_deaths, name AS name FROM "gamers"  GROUP BY name[0m
+  Rendered ranking/index.html.erb within layouts/application (9.0ms)
+Completed 200 OK in 113ms (Views: 111.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-12-07 16:31:36 -0200
+Processing by RankingController#index as HTML
+  [1m[35m (0.4ms)[0m  SELECT SUM("gamers"."killings") AS sum_killings, name AS name FROM "gamers"  GROUP BY name
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("gamers"."killings") AS sum_killings, name AS name FROM "gamers"  GROUP BY name[0m
+  [1m[35m (0.5ms)[0m  SELECT SUM("gamers"."deaths") AS sum_deaths, name AS name FROM "gamers"  GROUP BY name
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("gamers"."deaths") AS sum_deaths, name AS name FROM "gamers"  GROUP BY name[0m
+  Rendered ranking/index.html.erb within layouts/application (11.2ms)
+Completed 200 OK in 108ms (Views: 106.3ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-12-07 16:34:27 -0200
+Processing by RankingController#index as HTML
+  [1m[35m (0.2ms)[0m  SELECT SUM("gamers"."killings") AS sum_killings, name AS name FROM "gamers"  GROUP BY name
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("gamers"."killings") AS sum_killings, name AS name FROM "gamers"  GROUP BY name[0m
+  [1m[35m (0.1ms)[0m  SELECT SUM("gamers"."deaths") AS sum_deaths, name AS name FROM "gamers"  GROUP BY name
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("gamers"."deaths") AS sum_deaths, name AS name FROM "gamers"  GROUP BY name[0m
+  Rendered ranking/index.html.erb within layouts/application (4.7ms)
+Completed 200 OK in 106ms (Views: 104.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-12-07 16:34:48 -0200
+Processing by RankingController#index as HTML
+  [1m[35m (0.4ms)[0m  SELECT SUM("gamers"."killings") AS sum_killings, name AS name FROM "gamers"  GROUP BY name
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("gamers"."killings") AS sum_killings, name AS name FROM "gamers"  GROUP BY name[0m
+  [1m[35m (0.3ms)[0m  SELECT SUM("gamers"."deaths") AS sum_deaths, name AS name FROM "gamers"  GROUP BY name
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("gamers"."deaths") AS sum_deaths, name AS name FROM "gamers"  GROUP BY name[0m
+  Rendered ranking/index.html.erb within layouts/application (10.8ms)
+Completed 200 OK in 143ms (Views: 141.5ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-12-07 16:36:10 -0200
+Processing by RankingController#index as HTML
+  [1m[35m (0.4ms)[0m  SELECT SUM("gamers"."killings") AS sum_killings, name AS name FROM "gamers"  GROUP BY name
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("gamers"."killings") AS sum_killings, name AS name FROM "gamers"  GROUP BY name[0m
+  [1m[35m (0.4ms)[0m  SELECT SUM("gamers"."deaths") AS sum_deaths, name AS name FROM "gamers"  GROUP BY name
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("gamers"."deaths") AS sum_deaths, name AS name FROM "gamers"  GROUP BY name[0m
+  Rendered ranking/index.html.erb within layouts/application (12.4ms)
+Completed 200 OK in 128ms (Views: 126.1ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-12-07 16:40:04 -0200
+Processing by RankingController#index as HTML
+  [1m[35m (0.4ms)[0m  SELECT SUM("gamers"."killings") AS sum_killings, name AS name FROM "gamers"  GROUP BY name
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("gamers"."killings") AS sum_killings, name AS name FROM "gamers"  GROUP BY name[0m
+  [1m[35m (0.2ms)[0m  SELECT SUM("gamers"."deaths") AS sum_deaths, name AS name FROM "gamers"  GROUP BY name
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("gamers"."deaths") AS sum_deaths, name AS name FROM "gamers"  GROUP BY name[0m
+  Rendered ranking/index.html.erb within layouts/application (11.1ms)
+Completed 200 OK in 110ms (Views: 108.5ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/ranking/log" for 127.0.0.1 at 2014-12-07 16:41:10 -0200
+Processing by RankingController#log as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"RFwXHiqj2ejTFhldGyvFa1s/9/E3V73JmI/d/i7GrB0=", "log"=>{"text"=>"23/04/2013 15:34:22 - New match 11348965 has started\r\n23/04/2013 15:36:04 - Roman killed Nick using M16\r\n23/04/2013 15:36:33 - <WORLD> killed Nick by DROWN\r\n23/04/2013 15:36:33 - <WORLD> killed Roman by DROWN\r\n23/04/2013 15:36:33 - <WORLD> killed Roman by DROWN\r\n23/04/2013 15:36:33 - <WORLD> killed Roman by DROWN\r\n23/04/2013 15:39:22 - Match 11348965 has ended "}, "commit"=>"Atualizar ranking"}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "gamers" ("created_at", "name", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", "2014-12-07 18:41:10.798145"], ["name", "Roman"], ["updated_at", "2014-12-07 18:41:10.798145"]]
+  [1m[35m (196.4ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "gamers" ("created_at", "name", "updated_at") VALUES (?, ?, ?)  [["created_at", "2014-12-07 18:41:10.996543"], ["name", "Nick"], ["updated_at", "2014-12-07 18:41:10.996543"]]
+  [1m[36m (154.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "gamers" ("created_at", "name", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", "2014-12-07 18:41:11.152877"], ["name", "<WORLD>"], ["updated_at", "2014-12-07 18:41:11.152877"]]
+  [1m[35m (144.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "rounds" ("created_at", "finish", "start", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", "2014-12-07 18:41:11.299078"], ["finish", "1970-05-12 08:29:25.000000"], ["start", "1970-05-12 08:29:25.000000"], ["updated_at", "2014-12-07 18:41:11.299078"]]
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "gamers" SET "deaths" = ?, "killings" = ?, "round_id" = ?, "updated_at" = ? WHERE "gamers"."id" = 36[0m  [["deaths", 3], ["killings", 1], ["round_id", 20], ["updated_at", "2014-12-07 18:41:11.300868"]]
+  [1m[35mSQL (0.1ms)[0m  UPDATE "gamers" SET "deaths" = ?, "round_id" = ?, "updated_at" = ? WHERE "gamers"."id" = 37  [["deaths", 2], ["round_id", 20], ["updated_at", "2014-12-07 18:41:11.302308"]]
+  [1m[36mSQL (0.1ms)[0m  [1mUPDATE "gamers" SET "round_id" = ?, "updated_at" = ? WHERE "gamers"."id" = 38[0m  [["round_id", 20], ["updated_at", "2014-12-07 18:41:11.303323"]]
+  [1m[35m (140.5ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("gamers"."killings") AS sum_killings, name AS name FROM "gamers"  GROUP BY name[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT SUM("gamers"."killings") AS sum_killings, name AS name FROM "gamers"  GROUP BY name
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("gamers"."deaths") AS sum_deaths, name AS name FROM "gamers"  GROUP BY name[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT SUM("gamers"."deaths") AS sum_deaths, name AS name FROM "gamers"  GROUP BY name
+  Rendered ranking/index.html.erb within layouts/application (5.5ms)
+Completed 200 OK in 753ms (Views: 95.4ms | ActiveRecord: 638.0ms)
