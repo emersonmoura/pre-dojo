@@ -2,12 +2,12 @@ class Round < ActiveRecord::Base
 
   has_many :gamers
   
-  def started(time)
-    self.start = time
+  def started(timestamp)
+    self.start = int_to_time timestamp
   end 
 
-  def finished(time)
-    self.finish = time
+  def finished(timestamp)
+    self.finish =  int_to_time timestamp
   end
   
   def gamer(nome)
@@ -17,5 +17,11 @@ class Round < ActiveRecord::Base
   def add_gamer(gamer)
     self.gamers ||= []
     self.gamers.push gamer unless self.gamers.include? gamer
+  end
+  
+  private
+    
+  def int_to_time(time)
+    Time.at(time).to_datetime
   end
 end
