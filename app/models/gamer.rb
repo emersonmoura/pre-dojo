@@ -1,4 +1,8 @@
 class Gamer < ActiveRecord::Base
+  
+  has_many :ranking
+  has_many :round, through: :ranking
+  
   def kill
     self.killings ||= 0
     self.killings+=1

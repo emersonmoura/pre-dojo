@@ -10,6 +10,7 @@ describe Parser do
   let(:finished) { "23/04/2013 15:39:22 - Match #{final_time} has ended" }
   let(:killer) { "23/04/2013 15:36:04 - #{gamer_name} killed #{killed_name} using M16" }
   let(:ignored) { "23/04/2013 15:36:33 - #{ignored_killer} killed #{killed_name} by DROWN" }
+  let(:log) { File.open() } 
   
   describe '#parse' do
      

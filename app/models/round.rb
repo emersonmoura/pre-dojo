@@ -1,6 +1,7 @@
 class Round < ActiveRecord::Base
 
-  has_many :gamers
+  has_many :ranking
+  has_many :gamers, through: :ranking
   
   def started(timestamp)
     self.start = int_to_time timestamp

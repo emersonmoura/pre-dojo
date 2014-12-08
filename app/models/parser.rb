@@ -4,9 +4,9 @@ class Parser
     create_round(file) 
     file.each do |line|
       if line.include? 'killed'
-        gamer = get_gamer(gamer_name(line))
-        gamer.kill unless '<WORLD>'.eql? gamer_name(line)
-        get_gamer(killed_name(line)).killed
+        gamer = get_gamer(killer_name(line))
+        gamer.kill unless '<WORLD>'.eql? killer_name(line)
+        get_gamer(death_name(line)).killed
       end
     end
     @round.save!
@@ -34,11 +34,11 @@ class Parser
     @round.finished(file.last[/\d{8,}/].to_i) if file.last.include? 'has ended'
   end
   
-  def gamer_name(line)
+  def killer_name(line)
     line.split[3] 
   end
   
-  def killed_name(line)
+  def death_name(line)
     line.split[5]
   end
   
