@@ -4199,3 +4199,50 @@ Processing by RankingController#index as HTML
   [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("gamers"."deaths") AS sum_deaths, name AS name FROM "gamers"  GROUP BY name[0m
   Rendered ranking/index.html.erb within layouts/application (175.4ms)
 Completed 200 OK in 3485ms (Views: 3476.1ms | ActiveRecord: 0.7ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_gamers_on_round_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_gamers_on_round_id' AND type='index'
+[0m
+
+
+Started GET "/" for 127.0.0.1 at 2014-12-08 17:48:03 -0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by RankingController#index as HTML
+  [1m[35m (0.2ms)[0m  SELECT SUM("gamers"."killings") AS sum_killings, name AS name FROM "gamers"  GROUP BY name
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("gamers"."killings") AS sum_killings, name AS name FROM "gamers"  GROUP BY name[0m
+  [1m[35m (0.2ms)[0m  SELECT SUM("gamers"."deaths") AS sum_deaths, name AS name FROM "gamers"  GROUP BY name
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("gamers"."deaths") AS sum_deaths, name AS name FROM "gamers"  GROUP BY name[0m
+  Rendered ranking/index.html.erb within layouts/application (42.0ms)
+Completed 200 OK in 595ms (Views: 586.2ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/ranking/log" for 127.0.0.1 at 2014-12-08 17:48:09 -0200
+Processing by RankingController#log as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"j1iqBx9fvXpBIR7AsI8+TNSPGeKR2/PB9FsgfDGfq6s=", "log"=>{"text"=>""}, "commit"=>"Atualizar ranking"}
+  [1m[35m (0.2ms)[0m  SELECT SUM("gamers"."killings") AS sum_killings, name AS name FROM "gamers"  GROUP BY name
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("gamers"."killings") AS sum_killings, name AS name FROM "gamers"  GROUP BY name[0m
+  [1m[35m (0.2ms)[0m  SELECT SUM("gamers"."deaths") AS sum_deaths, name AS name FROM "gamers"  GROUP BY name
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("gamers"."deaths") AS sum_deaths, name AS name FROM "gamers"  GROUP BY name[0m
+  Rendered ranking/index.html.erb within layouts/application (7.5ms)
+Completed 200 OK in 136ms (Views: 134.9ms | ActiveRecord: 0.4ms)
+  [1m[36m (15.1ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (3.4ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (1.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateGamers (20141203235052)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (10.3ms)[0m  [1mCREATE TABLE "gamers" ("id" serial primary key, "name" character varying(255), "killings" integer, "deaths" integer, "round_id" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (0.6ms)[0m  CREATE  INDEX  "index_gamers_on_round_id" ON "gamers"  ("round_id")
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20141203235052"]]
+  [1m[35m (0.2ms)[0m  COMMIT
+Migrating to CreateRounds (20141203235112)
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (2.1ms)[0m  CREATE TABLE "rounds" ("id" serial primary key, "start" timestamp, "finish" timestamp, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20141203235112"]]
+  [1m[35m (0.2ms)[0m  COMMIT
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m

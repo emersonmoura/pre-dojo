@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20141203235112) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "gamers", force: true do |t|
     t.string   "name"
     t.integer  "killings"
@@ -22,7 +25,7 @@ ActiveRecord::Schema.define(version: 20141203235112) do
     t.datetime "updated_at"
   end
 
-  add_index "gamers", ["round_id"], name: "index_gamers_on_round_id"
+  add_index "gamers", ["round_id"], name: "index_gamers_on_round_id", using: :btree
 
   create_table "rounds", force: true do |t|
     t.datetime "start"

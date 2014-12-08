@@ -20,4 +20,11 @@ test:
   <<: *default
   database: db/test.sqlite3
 
-
+production:
+  adapter: postgresql
+  encoding: unicode
+  host: <%= ENV['DB_HOST'] %>
+  database: pre_dojo
+  pool: 5
+  username: <%= ENV['DB_USER'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
