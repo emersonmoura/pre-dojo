@@ -36,6 +36,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 group :development, :test do
   gem 'pry-rails'
   gem 'pry-rescue'
+  gem 'pry-byebug'
   gem 'rspec-rails', '<= 2.14.8'
   gem 'spring'
   gem 'better_errors'

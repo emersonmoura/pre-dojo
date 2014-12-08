@@ -15,8 +15,6 @@ ActiveRecord::Schema.define(version: 20141207190806) do
 
   create_table "gamers", force: true do |t|
     t.string   "name"
-    t.integer  "killings"
-    t.integer  "deaths"
     t.integer  "round_id"
     t.datetime "created_at"
     t.datetime "updated_at"

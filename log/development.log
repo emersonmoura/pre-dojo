@@ -4248,3 +4248,175 @@ Processing by RankingController#index as HTML
   [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("gamers"."deaths") AS sum_deaths, name AS name FROM "gamers"  GROUP BY name[0m
   Rendered ranking/index.html.erb within layouts/application (199.0ms)
 Completed 200 OK in 701ms (Views: 680.3ms | ActiveRecord: 0.9ms)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "rounds" ("created_at", "updated_at") VALUES (?, ?)  [["created_at", "2014-12-08 15:39:36.579052"], ["updated_at", "2014-12-08 15:39:36.579052"]]
+  [1m[36m (137.0ms)[0m  [1mcommit transaction[0m
+  [1m[35mRanking Load (0.2ms)[0m  SELECT "rankings".* FROM "rankings"  WHERE "rankings"."round_id" = ?  [["round_id", 21]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "gamers" ("created_at", "updated_at") VALUES (?, ?)  [["created_at", "2014-12-08 15:39:44.544311"], ["updated_at", "2014-12-08 15:39:44.544311"]]
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "rankings" ("created_at", "gamer_id", "round_id", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", "2014-12-08 15:39:44.601821"], ["gamer_id", 39], ["round_id", 21], ["updated_at", "2014-12-08 15:39:44.601821"]]
+  [1m[35m (119.5ms)[0m  commit transaction
+  [1m[36mGamer Load (0.2ms)[0m  [1mSELECT "gamers".* FROM "gamers" INNER JOIN "rankings" ON "gamers"."id" = "rankings"."gamer_id" WHERE "rankings"."round_id" = ?[0m  [["round_id", 21]]
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35mRanking Load (0.1ms)[0m  SELECT "rankings".* FROM "rankings"
+  [1m[36mGamer Load (0.3ms)[0m  [1mSELECT  "gamers".* FROM "gamers"   ORDER BY "gamers"."id" DESC LIMIT 1[0m
+  [1m[35mRanking Load (0.2ms)[0m  SELECT "rankings".* FROM "rankings"  WHERE "rankings"."gamer_id" = ?  [["gamer_id", 39]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "rankings" ("created_at", "gamer_id", "updated_at") VALUES (?, ?, ?)  [["created_at", "2014-12-08 15:40:56.876098"], ["gamer_id", 39], ["updated_at", "2014-12-08 15:40:56.876098"]]
+  [1m[36m (157.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35mGamer Load (0.1ms)[0m  SELECT  "gamers".* FROM "gamers"   ORDER BY "gamers"."id" DESC LIMIT 1
+  [1m[36mGamer Load (0.2ms)[0m  [1mSELECT "gamers".* FROM "gamers" INNER JOIN "rankings" ON "rankings"."gamer_id" = "gamers"."id" WHERE "gamers"."round_id" = 1[0m
+  [1m[35m (0.2ms)[0m  SELECT "rankings".id FROM "rankings"  WHERE "rankings"."gamer_id" = ?  [["gamer_id", 39]]
+  [1m[36mRanking Load (0.2ms)[0m  [1mSELECT "rankings".* FROM "rankings"  WHERE "rankings"."gamer_id" = ?[0m  [["gamer_id", 39]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35mRound Load (0.1ms)[0m  SELECT "rounds".* FROM "rounds" INNER JOIN "rankings" ON "rounds"."id" = "rankings"."round_id" WHERE "rankings"."gamer_id" = ?  [["gamer_id", 39]]
+  [1m[36mRound Load (0.2ms)[0m  [1mSELECT  "rounds".* FROM "rounds"   ORDER BY "rounds"."id" DESC LIMIT 1[0m
+  [1m[35mGamer Load (0.2ms)[0m  SELECT "gamers".* FROM "gamers" INNER JOIN "rankings" ON "gamers"."id" = "rankings"."gamer_id" WHERE "rankings"."round_id" = ?  [["round_id", 21]]
+  [1m[36mRanking Load (0.2ms)[0m  [1mSELECT "rankings".* FROM "rankings"  WHERE "rankings"."round_id" = ?[0m  [["round_id", 21]]
+  [1m[35mGamer Load (0.6ms)[0m  SELECT "gamers".* FROM "gamers" INNER JOIN "rankings" ON "gamers"."id" = "rankings"."gamer_id" WHERE "rankings"."round_id" = ? AND "gamers"."gamer_id" = 39  [["round_id", 21]]
+SQLite3::SQLException: no such column: gamers.gamer_id: SELECT "gamers".* FROM "gamers" INNER JOIN "rankings" ON "gamers"."id" = "rankings"."gamer_id" WHERE "rankings"."round_id" = ? AND "gamers"."gamer_id" = 39
+  [1m[36mGamer Load (0.2ms)[0m  [1mSELECT  "gamers".* FROM "gamers" INNER JOIN "rankings" ON "gamers"."id" = "rankings"."gamer_id" WHERE "rankings"."round_id" = ? AND "gamers"."gamer_id" = 39 LIMIT 1[0m  [["round_id", 21]]
+SQLite3::SQLException: no such column: gamers.gamer_id: SELECT  "gamers".* FROM "gamers" INNER JOIN "rankings" ON "gamers"."id" = "rankings"."gamer_id" WHERE "rankings"."round_id" = ? AND "gamers"."gamer_id" = 39 LIMIT 1
+  [1m[35mGamer Load (0.5ms)[0m  SELECT  "gamers".* FROM "gamers" INNER JOIN "rankings" ON "gamers"."id" = "rankings"."gamer_id" WHERE "rankings"."round_id" = ? AND "gamers"."gamer_id" = 39 LIMIT 1  [["round_id", 21]]
+SQLite3::SQLException: no such column: gamers.gamer_id: SELECT  "gamers".* FROM "gamers" INNER JOIN "rankings" ON "gamers"."id" = "rankings"."gamer_id" WHERE "rankings"."round_id" = ? AND "gamers"."gamer_id" = 39 LIMIT 1
+  [1m[36mGamer Load (0.2ms)[0m  [1mSELECT  "gamers".* FROM "gamers" INNER JOIN "rankings" ON "gamers"."id" = "rankings"."gamer_id" WHERE "rankings"."round_id" = ? AND "gamers"."id" = 39 LIMIT 1[0m  [["round_id", 21]]
+  [1m[35mGamer Load (0.1ms)[0m  SELECT  "gamers".* FROM "gamers" INNER JOIN "rankings" ON "gamers"."id" = "rankings"."gamer_id" WHERE "rankings"."round_id" = ? AND "gamers"."id" = 39 LIMIT 1  [["round_id", 21]]
+  [1m[36mRanking Load (0.1ms)[0m  [1mSELECT "rankings".* FROM "rankings"  WHERE "rankings"."gamer_id" = ?[0m  [["gamer_id", 39]]
+  [1m[35mGamer Load (0.2ms)[0m  SELECT "gamers".* FROM "gamers" INNER JOIN "rankings" "rankings_gamers" ON "rankings_gamers"."gamer_id" = "gamers"."id" INNER JOIN "rankings" ON "gamers"."id" = "rankings"."gamer_id" WHERE "rankings"."round_id" = ? AND "gamers"."round_id" = 1  [["round_id", 21]]
+  [1m[36mGamer Load (0.3ms)[0m  [1mSELECT "gamers".* FROM "gamers" INNER JOIN "rankings" "rankings_gamers" ON "rankings_gamers"."gamer_id" = "gamers"."id" INNER JOIN "rankings" ON "gamers"."id" = "rankings"."gamer_id" WHERE "rankings"."round_id" = ? AND "gamers"."round_id" = 2[0m  [["round_id", 21]]
+  [1m[35mGamer Load (0.3ms)[0m  SELECT "gamers".* FROM "gamers" INNER JOIN "rankings" "rankings_gamers" ON "rankings_gamers"."gamer_id" = "gamers"."id" INNER JOIN "rankings" ON "gamers"."id" = "rankings"."gamer_id" WHERE "rankings"."round_id" = ? AND "gamers"."round_id" = 3  [["round_id", 21]]
+  [1m[36mGamer Load (0.2ms)[0m  [1mSELECT "gamers".* FROM "gamers" INNER JOIN "rankings" "rankings_gamers" ON "rankings_gamers"."gamer_id" = "gamers"."id" INNER JOIN "rankings" ON "gamers"."id" = "rankings"."gamer_id" WHERE "rankings"."round_id" = ? AND "gamers"."round_id" = 3[0m  [["round_id", 21]]
+  [1m[35mRound Load (0.2ms)[0m  SELECT  "rounds".* FROM "rounds"   ORDER BY "rounds"."id" DESC LIMIT 1
+  [1m[36mRanking Load (0.1ms)[0m  [1mSELECT "rankings".* FROM "rankings"  WHERE "rankings"."round_id" = ?[0m  [["round_id", 21]]
+  [1m[35mGamer Load (0.2ms)[0m  SELECT "gamers".* FROM "gamers" INNER JOIN "rankings" ON "gamers"."id" = "rankings"."gamer_id" WHERE "rankings"."round_id" = ?  [["round_id", 21]]
+  [1m[36mRanking Load (0.2ms)[0m  [1mSELECT "rankings".* FROM "rankings"  WHERE "rankings"."gamer_id" = ?[0m  [["gamer_id", 39]]
+  [1m[35mRanking Load (0.4ms)[0m  SELECT  "rankings".* FROM "rankings"  WHERE "rankings"."gamer_id" = ? AND "rankings"."round_id" = 21 LIMIT 1  [["gamer_id", 39]]
+  [1m[36mRanking Load (0.1ms)[0m  [1mSELECT  "rankings".* FROM "rankings"  WHERE "rankings"."gamer_id" = ? AND "rankings"."round_id" = 21 LIMIT 1[0m  [["gamer_id", 39]]
+  [1m[35mRanking Load (0.2ms)[0m  SELECT  "rankings".* FROM "rankings"  WHERE "rankings"."gamer_id" = ? AND "rankings"."round_id" = 1 LIMIT 1  [["gamer_id", 39]]
+  [1m[36mGamer Load (0.2ms)[0m  [1mSELECT  "gamers".* FROM "gamers"   ORDER BY "gamers"."id" DESC LIMIT 1[0m
+  [1m[35mRanking Load (0.2ms)[0m  SELECT  "rankings".* FROM "rankings"  WHERE "rankings"."gamer_id" = ? AND "rankings"."round_id" = 21 LIMIT 1  [["gamer_id", 39]]
+  [1m[36mRanking Load (0.1ms)[0m  [1mSELECT  "rankings".* FROM "rankings"  WHERE "rankings"."gamer_id" = ? AND "rankings"."round_id" = 21 LIMIT 1[0m  [["gamer_id", 39]]
+  [1m[35mRanking Load (0.1ms)[0m  SELECT  "rankings".* FROM "rankings"  WHERE "rankings"."gamer_id" = ? AND "rankings"."round_id" = 21 LIMIT 1  [["gamer_id", 39]]
+  [1m[36mRanking Load (0.2ms)[0m  [1mSELECT  "rankings".* FROM "rankings"  WHERE "rankings"."gamer_id" = ? AND "rankings"."round_id" = 21 LIMIT 1[0m  [["gamer_id", 39]]
+  [1m[35mGamer Load (0.1ms)[0m  SELECT  "gamers".* FROM "gamers"   ORDER BY "gamers"."id" DESC LIMIT 1
+  [1m[36mRanking Load (0.1ms)[0m  [1mSELECT  "rankings".* FROM "rankings"  WHERE "rankings"."gamer_id" = ? AND "rankings"."round_id" = 21 LIMIT 1[0m  [["gamer_id", 39]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "rankings" SET "killings" = ?, "updated_at" = ? WHERE "rankings"."id" = 1[0m  [["killings", 1], ["updated_at", "2014-12-08 16:10:28.066958"]]
+  [1m[35m (165.7ms)[0m  commit transaction
+  [1m[36mRanking Load (0.2ms)[0m  [1mSELECT  "rankings".* FROM "rankings"  WHERE "rankings"."gamer_id" = ? AND "rankings"."round_id" = 21 LIMIT 1[0m  [["gamer_id", 39]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "rankings" SET "killings" = ?, "updated_at" = ? WHERE "rankings"."id" = 1[0m  [["killings", 2], ["updated_at", "2014-12-08 16:10:32.031611"]]
+  [1m[35m (129.7ms)[0m  commit transaction
+  [1m[36mRanking Load (0.1ms)[0m  [1mSELECT  "rankings".* FROM "rankings"  WHERE "rankings"."gamer_id" = ? AND "rankings"."round_id" = 21 LIMIT 1[0m  [["gamer_id", 39]]
+  [1m[35mRanking Load (0.2ms)[0m  SELECT  "rankings".* FROM "rankings"  WHERE "rankings"."gamer_id" = ? AND "rankings"."round_id" = 21 LIMIT 1  [["gamer_id", 39]]
+  [1m[36mRanking Load (0.2ms)[0m  [1mSELECT  "rankings".* FROM "rankings"  WHERE "rankings"."gamer_id" = ? AND "rankings"."round_id" = 21 LIMIT 1[0m  [["gamer_id", 39]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "rankings" SET "killings" = ?, "updated_at" = ? WHERE "rankings"."id" = 1[0m  [["killings", 3], ["updated_at", "2014-12-08 16:11:28.500808"]]
+  [1m[35m (162.7ms)[0m  commit transaction
+  [1m[36mRanking Load (0.1ms)[0m  [1mSELECT  "rankings".* FROM "rankings"  WHERE "rankings"."gamer_id" = ? AND "rankings"."round_id" = 21 LIMIT 1[0m  [["gamer_id", 39]]
+  [1m[35mRanking Load (0.2ms)[0m  SELECT  "rankings".* FROM "rankings"  WHERE "rankings"."gamer_id" = ? AND "rankings"."round_id" = 21 LIMIT 1  [["gamer_id", 39]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "rankings" SET "killings" = ?, "updated_at" = ? WHERE "rankings"."id" = 1  [["killings", 4], ["updated_at", "2014-12-08 16:11:32.027253"]]
+  [1m[36m (198.9ms)[0m  [1mcommit transaction[0m
+  [1m[35mRanking Load (0.2ms)[0m  SELECT  "rankings".* FROM "rankings"  WHERE "rankings"."gamer_id" = ? AND "rankings"."round_id" = 21 LIMIT 1  [["gamer_id", 39]]
+  [1m[36mRanking Load (0.2ms)[0m  [1mSELECT  "rankings".* FROM "rankings"  WHERE "rankings"."gamer_id" = ? AND "rankings"."round_id" = 21 LIMIT 1[0m  [["gamer_id", 39]]
+  [1m[35mRanking Load (0.1ms)[0m  SELECT  "rankings".* FROM "rankings"  WHERE "rankings"."gamer_id" = ? AND "rankings"."round_id" = 21 LIMIT 1  [["gamer_id", 39]]
+  [1m[36mRanking Load (0.2ms)[0m  [1mSELECT  "rankings".* FROM "rankings"  WHERE "rankings"."gamer_id" = ? AND "rankings"."round_id" = 21 LIMIT 1[0m  [["gamer_id", 39]]
+  [1m[35mRanking Load (0.1ms)[0m  SELECT  "rankings".* FROM "rankings"  WHERE "rankings"."gamer_id" = ? AND "rankings"."round_id" = 21 LIMIT 1  [["gamer_id", 39]]
+  [1m[36mGamer Load (0.1ms)[0m  [1mSELECT  "gamers".* FROM "gamers"   ORDER BY "gamers"."id" DESC LIMIT 1[0m
+  [1m[35mRanking Load (0.1ms)[0m  SELECT  "rankings".* FROM "rankings"  WHERE "rankings"."gamer_id" = ? AND "rankings"."round_id" = 21 LIMIT 1  [["gamer_id", 39]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  UPDATE "rankings" SET "deaths" = ?, "updated_at" = ? WHERE "rankings"."id" = 1  [["deaths", 1], ["updated_at", "2014-12-08 16:12:26.686808"]]
+  [1m[36m (189.9ms)[0m  [1mcommit transaction[0m
+  [1m[35mRanking Load (0.2ms)[0m  SELECT  "rankings".* FROM "rankings"  WHERE "rankings"."gamer_id" = ? AND "rankings"."round_id" = 21 LIMIT 1  [["gamer_id", 39]]
+  [1m[36mRanking Load (0.2ms)[0m  [1mSELECT  "rankings".* FROM "rankings"  WHERE "rankings"."gamer_id" = ? AND "rankings"."round_id" = 21 LIMIT 1[0m  [["gamer_id", 39]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "rankings" SET "deaths" = ?, "updated_at" = ? WHERE "rankings"."id" = 1[0m  [["deaths", 2], ["updated_at", "2014-12-08 16:12:32.131108"]]
+  [1m[35m (127.9ms)[0m  commit transaction
+  [1m[36mRanking Load (0.1ms)[0m  [1mSELECT  "rankings".* FROM "rankings"  WHERE "rankings"."gamer_id" = ? AND "rankings"."round_id" = 21 LIMIT 1[0m  [["gamer_id", 39]]
+  [1m[36m (132.9ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (132.9ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateGamers (20141203235052)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.7ms)[0m  CREATE TABLE "gamers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "round_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (0.1ms)[0m  [1mCREATE  INDEX "index_gamers_on_round_id" ON "gamers" ("round_id")[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20141203235052"]]
+  [1m[36m (139.4ms)[0m  [1mcommit transaction[0m
+Migrating to CreateRounds (20141203235112)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.5ms)[0m  [1mCREATE TABLE "rounds" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "start" datetime, "finish" datetime, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20141203235112"]]
+  [1m[36m (163.0ms)[0m  [1mcommit transaction[0m
+Migrating to CreateRankings (20141207190806)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.6ms)[0m  [1mCREATE TABLE "rankings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "round_id" integer, "gamer_id" integer, "killings" integer, "deaths" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (0.4ms)[0m  CREATE  INDEX "index_rankings_on_round_id" ON "rankings" ("round_id")
+  [1m[36m (0.3ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_rankings_on_round_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_rankings_on_round_id' AND type='index'
+[0m
+  [1m[35m (0.3ms)[0m  CREATE  INDEX "index_rankings_on_gamer_id" ON "rankings" ("gamer_id")
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20141207190806"]]
+  [1m[35m (192.8ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_gamers_on_round_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_gamers_on_round_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_rankings_on_gamer_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_rankings_on_gamer_id' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_rankings_on_round_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_rankings_on_round_id' AND type='index'
+
+  [1m[35mRound Load (0.5ms)[0m  SELECT  "rounds".* FROM "rounds"   ORDER BY "rounds"."id" DESC LIMIT 1
+  [1m[36mGamer Load (0.2ms)[0m  [1mSELECT "gamers".* FROM "gamers" INNER JOIN "rankings" ON "gamers"."id" = "rankings"."gamer_id" WHERE "rankings"."round_id" = ?[0m  [["round_id", 21]]
+  [1m[35mRanking Load (0.4ms)[0m  SELECT  "rankings".* FROM "rankings"  WHERE "rankings"."gamer_id" = ? AND "rankings"."round_id" = 1 LIMIT 1  [["gamer_id", 39]]
+  [1m[36mRound Load (0.2ms)[0m  [1mSELECT  "rounds".* FROM "rounds"   ORDER BY "rounds"."id" DESC LIMIT 1[0m
+  [1m[35mRound Load (0.3ms)[0m  SELECT  "rounds".* FROM "rounds"   ORDER BY "rounds"."id" ASC LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM(killings) AS sum_killings, name AS name FROM "gamers"  GROUP BY name[0m
+SQLite3::SQLException: no such column: killings: SELECT SUM(killings) AS sum_killings, name AS name FROM "gamers"  GROUP BY name
+  [1m[35m (0.2ms)[0m  SELECT SUM({:ranking=>:killings}) AS sum_ranking_killings, name AS name FROM "gamers"  GROUP BY name
+SQLite3::SQLException: unrecognized token: "{": SELECT SUM({:ranking=>:killings}) AS sum_ranking_killings, name AS name FROM "gamers"  GROUP BY name
+  [1m[36mGamer Load (0.2ms)[0m  [1mSELECT "gamers".* FROM "gamers"  GROUP BY name[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "gamers" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2014-12-08 16:49:35.083709"], ["updated_at", "2014-12-08 16:49:35.083709"]]
+  [1m[35m (164.7ms)[0m  commit transaction
+  [1m[36mGamer Load (0.2ms)[0m  [1mSELECT "gamers".* FROM "gamers"  GROUP BY name[0m
+  [1m[35m (0.3ms)[0m  SELECT SUM({:ranking=>:killings}) AS sum_ranking_killings, name AS name FROM "gamers"  GROUP BY name
+SQLite3::SQLException: unrecognized token: "{": SELECT SUM({:ranking=>:killings}) AS sum_ranking_killings, name AS name FROM "gamers"  GROUP BY name
+  [1m[36m (0.3ms)[0m  [1mSELECT SUM({:ranking=>:killing}) AS sum_ranking_killing, name AS name FROM "gamers"  GROUP BY name[0m
+SQLite3::SQLException: unrecognized token: "{": SELECT SUM({:ranking=>:killing}) AS sum_ranking_killing, name AS name FROM "gamers"  GROUP BY name
+  [1m[35mGamer Load (0.2ms)[0m  SELECT "gamers".* FROM "gamers"  GROUP BY name
+  [1m[36mGamer Load (0.2ms)[0m  [1mSELECT "gamers".* FROM "gamers"  GROUP BY name[0m
+  [1m[35mGamer Load (0.3ms)[0m  SELECT "gamers".* FROM "gamers"  GROUP BY name
+  [1m[36mGamer Load (0.4ms)[0m  [1mSELECT  "gamers".* FROM "gamers"   ORDER BY "gamers"."id" DESC LIMIT 1[0m
+  [1m[35mRanking Load (0.2ms)[0m  SELECT "rankings".* FROM "rankings"  WHERE "rankings"."gamer_id" = ?  [["gamer_id", 1]]
+  [1m[36mGamer Load (0.4ms)[0m  [1mSELECT "gamers".* FROM "gamers"  GROUP BY name[0m
+  [1m[35mGamer Load (0.3ms)[0m  SELECT "gamers".* FROM "gamers"  GROUP BY name

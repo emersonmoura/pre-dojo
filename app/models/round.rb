@@ -5,7 +5,7 @@ class Round < ActiveRecord::Base
   
   def started(timestamp)
     self.start = int_to_time timestamp
-  end 
+  end
 
   def finished(timestamp)
     self.finish =  int_to_time timestamp

@@ -20,54 +20,54 @@ describe Parser do
       end
     
      it 'parse finished time' do
-        round = subject.parse [finished]
+        round = subject.parse [started, finished]
         expect(round.finish.to_i).to eq final_time
       end
     
     context 'ignored killer' do
        before do
-        @round = subject.parse [ignored]
+        @round = subject.parse [started, ignored, finished]
       end
       
      it { expect(@round.gamer(ignored_killer)).not_to be_nil }
       
       it { expect(@round.gamer(ignored_killer).name).to eq ignored_killer }
       
-      it { expect(@round.gamer(ignored_killer).killings).to be_nil }
+      it { expect(@round.gamer(ignored_killer).killings @round).to be_nil }
     
       it { expect(@round.gamer(killed_name).name).to eq killed_name }
       
-      it { expect(@round.gamer(killed_name).deaths).to eq 1 }
+      it { binding.pry; expect(@round.gamer(killed_name).deaths @round).to eq 1 }
     
     end
     
     context 'not ignored killer' do
       
       before do
-        @round = subject.parse [killer]
+        @round = subject.parse [started, killer]
       end
       
       it { expect(@round.gamer(gamer_name)).not_to be_nil }
       
       it { expect(@round.gamer(gamer_name).name).to eq gamer_name }
       
-      it { expect(@round.gamer(gamer_name).killings).to eq 1 }
+      it { expect(@round.gamer(gamer_name).killings @round).to eq 1 }
      
       it { expect(@round.gamer(killed_name).name).to eq killed_name }
       
-      it { expect(@round.gamer(killed_name).deaths).to eq 1 }
+      it { expect(@round.gamer(killed_name).deaths @round).to eq 1 }
       
     end
     
     context 'repeated killer' do
       
        before do
-        @round = subject.parse [killer, killer]
+        @round = subject.parse [started, killer, killer]
       end
     
-      it {  expect(@round.gamer(gamer_name).killings).to eq 2 }
+      it {  expect(@round.gamer(gamer_name).killings @round).to eq 2 }
       
-      it { expect(@round.gamer(killed_name).deaths).to eq 2 }
+      it { expect(@round.gamer(killed_name).deaths @round).to eq 2 }
     
     end
     
