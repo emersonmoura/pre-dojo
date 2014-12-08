@@ -17,6 +17,8 @@ gem 'therubyracer',  platform: :ruby
 
 gem 'therubyrhino', platform: :jruby
 
+gem 'pg'
+
 gem 'simple_form'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
