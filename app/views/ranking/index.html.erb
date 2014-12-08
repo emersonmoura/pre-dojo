@@ -4,8 +4,10 @@
 <%= simple_form_for :log, { url: ranking_log_path } do |f| %>
   <%= f.input :text, as: :text, :input_html => { style: 'width: 400px; height: 200px'}, label: 'Cole aqui o log:', required: false %>
   <%= f.button :submit, "Atualizar ranking" %>
-  <%= link_to 'Apagar ranking', ranking_destroy_path, method: :delete, class:'btn btn-default', data: { confirm: 'Tem certeza disso?' } %>
+  
 <% end %>
+  <br>
+<%= link_to 'Apagar ranking', ranking_destroy_path, method: :delete, class:'btn btn-default', data: { confirm: 'Tem certeza disso?' } %>
 </div>
 </div>
 <br><br>
