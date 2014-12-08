@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get 'ranking/index'
   root 'ranking#index'
+  delete 'ranking/destroy'
   post 'ranking/log'
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -7,4 +7,8 @@ class RankingController < ApplicationController
     Parser.new.parse text.lines unless text.empty?
     render :index
   end
+  
+  def destroy
+    render :index
+  end
 end
