@@ -4577,3 +4577,52 @@ Processing by RankingController#index as HTML
   Rendered ranking/index.html.erb within layouts/application (6.2ms)
 Completed 200 OK in 117ms (Views: 115.4ms | ActiveRecord: 0.5ms)
   [1m[36mSQL (156.6ms)[0m  [1mDELETE FROM "gamers"[0m
+
+
+Started GET "/" for 127.0.0.1 at 2014-12-08 19:32:07 -0200
+Processing by RankingController#index as HTML
+  [1m[35m (0.1ms)[0m  SELECT SUM("gamers"."killings") AS sum_killings, name AS name FROM "gamers"  GROUP BY name
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("gamers"."killings") AS sum_killings, name AS name FROM "gamers"  GROUP BY name[0m
+  [1m[35m (0.1ms)[0m  SELECT SUM("gamers"."deaths") AS sum_deaths, name AS name FROM "gamers"  GROUP BY name
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("gamers"."deaths") AS sum_deaths, name AS name FROM "gamers"  GROUP BY name[0m
+  Rendered ranking/index.html.erb within layouts/application (8.7ms)
+Completed 200 OK in 117ms (Views: 115.3ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/ranking/log" for 127.0.0.1 at 2014-12-08 19:32:31 -0200
+Processing by RankingController#log as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"j1iqBx9fvXpBIR7AsI8+TNSPGeKR2/PB9FsgfDGfq6s=", "log"=>{"text"=>"23/04/2013 15:34:22 - New match 11348965 has started\r\n23/04/2013 15:36:04 - Roman killed Nick using M16\r\n23/04/2013 15:36:33 - <WORLD> killed Nick by DROWN\r\n23/04/2013 15:39:22 - Match 11348965 has ended"}, "commit"=>"Atualizar ranking"}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "gamers" ("created_at", "name", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", "2014-12-08 21:32:31.272165"], ["name", "Roman"], ["updated_at", "2014-12-08 21:32:31.272165"]]
+  [1m[35m (127.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "gamers" ("created_at", "name", "updated_at") VALUES (?, ?, ?)  [["created_at", "2014-12-08 21:32:31.408548"], ["name", "Nick"], ["updated_at", "2014-12-08 21:32:31.408548"]]
+  [1m[36m (132.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "gamers" ("created_at", "name", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", "2014-12-08 21:32:31.542491"], ["name", "<WORLD>"], ["updated_at", "2014-12-08 21:32:31.542491"]]
+  [1m[35m (165.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "rounds" ("created_at", "finish", "start", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", "2014-12-08 21:32:31.710514"], ["finish", "1970-05-12 08:29:25.000000"], ["start", "1970-05-12 08:29:25.000000"], ["updated_at", "2014-12-08 21:32:31.710514"]]
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "gamers" SET "killings" = ?, "round_id" = ?, "updated_at" = ? WHERE "gamers"."id" = 39[0m  [["killings", 1], ["round_id", 21], ["updated_at", "2014-12-08 21:32:31.721436"]]
+  [1m[35mSQL (0.1ms)[0m  UPDATE "gamers" SET "deaths" = ?, "round_id" = ?, "updated_at" = ? WHERE "gamers"."id" = 40  [["deaths", 2], ["round_id", 21], ["updated_at", "2014-12-08 21:32:31.723514"]]
+  [1m[36mSQL (0.1ms)[0m  [1mUPDATE "gamers" SET "round_id" = ?, "updated_at" = ? WHERE "gamers"."id" = 41[0m  [["round_id", 21], ["updated_at", "2014-12-08 21:32:31.724499"]]
+  [1m[35m (128.8ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("gamers"."killings") AS sum_killings, name AS name FROM "gamers"  GROUP BY name[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT SUM("gamers"."killings") AS sum_killings, name AS name FROM "gamers"  GROUP BY name
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("gamers"."deaths") AS sum_deaths, name AS name FROM "gamers"  GROUP BY name[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT SUM("gamers"."deaths") AS sum_deaths, name AS name FROM "gamers"  GROUP BY name
+  Rendered ranking/index.html.erb within layouts/application (5.5ms)
+Completed 200 OK in 772ms (Views: 130.1ms | ActiveRecord: 557.3ms)
+
+
+Started DELETE "/ranking/destroy" for 127.0.0.1 at 2014-12-08 19:32:36 -0200
+Processing by RankingController#destroy as HTML
+  Parameters: {"authenticity_token"=>"j1iqBx9fvXpBIR7AsI8+TNSPGeKR2/PB9FsgfDGfq6s="}
+  [1m[36mSQL (158.7ms)[0m  [1mDELETE FROM "gamers"[0m
+  [1m[35mSQL (202.0ms)[0m  DELETE FROM "rounds"
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("gamers"."killings") AS sum_killings, name AS name FROM "gamers"  GROUP BY name[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT SUM("gamers"."killings") AS sum_killings, name AS name FROM "gamers"  GROUP BY name
+  [1m[36m (0.1ms)[0m  [1mSELECT SUM("gamers"."deaths") AS sum_deaths, name AS name FROM "gamers"  GROUP BY name[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT SUM("gamers"."deaths") AS sum_deaths, name AS name FROM "gamers"  GROUP BY name
+  Rendered ranking/index.html.erb within layouts/application (4.3ms)
+Completed 200 OK in 491ms (Views: 128.7ms | ActiveRecord: 361.0ms)
