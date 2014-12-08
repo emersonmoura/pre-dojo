@@ -9,6 +9,8 @@ class RankingController < ApplicationController
   end
   
   def destroy
+    Gamer.delete_all
+    Round.delete_all
     render :index
   end
 end
