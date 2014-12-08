@@ -1,2 +1,17 @@
-Coloque aqui suas instruÁıes ou coment·rios que ache ˙til/relevantes para possamos ler 
-quando estivermos avaliando a sua soluÁ„o
+O problema n√£o especifica nenhuma linguagem/plataforma, portanto tomei a liberdade de fazer utilizando Ruby e Rails
+
+Para ver o projeto em execu√ß√£o basta acessar o seguinte link: http://ranking-amil.herokuapp.com/
+
+A vers√£o atual n√£o contempla multiplas partidas. 
+
+Testes unit√°rios ficam na pasta spec/models
+
+Classes ficam na pasta app/models - app/controllers
+
+Telas em app/views
+
+Para executar o projeto localmente, instale ruby e o rails: http://rvm.io/rvm/install
+
+Para executar os teste digite na raiz do projeto o comando: rspec 
+
+Para "subir" o servi√ßo digite na raiz do projeto o comando: rails server (endere√ßo para acesso: localhost:3000)
