@@ -1,3 +1,7 @@
+RESULTADO
+=========
+Acesse para ver o resultado: http://ranking-amil.herokuapp.com/
+
 PROBLEMA
 ========
 Dado o seguinte log de um jogo de tiro em primeira pessoa:
