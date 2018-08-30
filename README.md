@@ -1,20 +1,19 @@
-RESULTADO
+RESULT
 =========
-Acesse para ver o resultado: http://ranking-amil.herokuapp.com/
+To see this code working you can access this link: http://ranking-amil.herokuapp.com/
 
-PROBLEMA
+PROBLEM
 ========
-Dado o seguinte log de um jogo de tiro em primeira pessoa:
+Given a following log of a gun game in first person:
 
 23/04/2013 15:34:22 - New match 11348965 has started  
 23/04/2013 15:36:04 - Roman killed Nick using M16  
 23/04/2013 15:36:33 - &lt;WORLD&gt; killed Nick by DROWN  
 23/04/2013 15:39:22 - Match 11348965 has ended  
 
-Resultado esperado
+Expected result
 ------------------
-* A partir de um input de um arquivo de log do formato acima, montar o ranking de cada partida, com a quantidade assassinatos e a quantidade de mortes de cada jogador;
-
+* Given a log file input with above format, you need to create the game match ranking with each gamer murder and death;
 Observações
 ------------
 * Assassinatos realizados pelo &lt;WORLD&gt; devem ser desconsiderados, no entanto, as mortes causadas pelo &lt;WORLD&gt; devem ser consideradas para o jogador que foi morto.
